@@ -224,7 +224,7 @@ class CoordinateSnapper:
         dφ = radians(lat2 - lat1)
         dλ = radians(lon2 - lon1)
 
-        a = sin(dφ/2)*2 + cos(φ1) * cos(φ2) * sin(dλ/2)*2
+        a = sin(dφ/2)**2 + cos(φ1) * cos(φ2) * sin(dλ/2)**2
         c = 2 * atan2(sqrt(a), sqrt(1-a))
         return R * c
 
@@ -280,7 +280,7 @@ class Navigator:
         lat2, lon2 = b
         dlat = radians(lat2 - lat1)
         dlon = radians(lon2 - lon1)
-        x = sin(dlat/2)*2 + cos(radians(lat1))*cos(radians(lat2))*sin(dlon/2)*2
+        x = sin(dlat/2)**2 + cos(radians(lat1))*cos(radians(lat2))*sin(dlon/2)**2
         return R * 2 * atan2(sqrt(x), sqrt(1-x)) * 1000
 
     def astar(self, graph, start, goal):
